@@ -8,6 +8,7 @@ var already_handled = new WeakSet();
 var trackedModals = new Set();
 
 var enabled;
+
 var reject;
 
 var provider;
@@ -63,6 +64,7 @@ function simulateClick(element) {
     }
 }
 
+//is it clickable? i guess we'll never know
 function isClickable(element) {
     // button element, a element
     // role of "button", "submit", etc.
@@ -175,6 +177,7 @@ function checkElementForProviderClick(element) {
     return false;
 }
 
+//gives the element a door handle
 function handleElement(element, do_more_options = true) {
 
     if (!enabled) { return; }
@@ -239,6 +242,7 @@ function handleElement(element, do_more_options = true) {
 
 }
 
+//observes shadow roots
 function observeShadowRoots(root) {
     for (const elem of root.querySelectorAll("*")) {
         if (elem.shadowRoot) {

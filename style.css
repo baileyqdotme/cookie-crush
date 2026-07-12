@@ -4,6 +4,8 @@
     color:rgb(235, 235, 235);
 
 }
+
+
 body{
     min-width: 400px;
     min-height:400px;
@@ -14,6 +16,7 @@ body{
     filter: invert(0);
 }
 
+
 h3{
     background-color: rgb(95, 72, 72);
     display: inline;
@@ -21,6 +24,7 @@ h3{
     border-radius: 4px;
 }
 
+/* did you know ctrl + slash starts a comment AUTOMATICALLY */
 .grid{
     display: grid;
     grid-template-areas: 
@@ -76,12 +80,12 @@ h3{
     cursor: pointer;
 }
 
-.indicator .slider{
+.indicator .slider {
     height: 25px;
     width: 25px;
     position: relative;
     background-color: rgb(247, 49, 49);
-    filter: invert(0);
+    /*filter: invert(0) !important;*/
     border-radius: 100%;
     border-width: 100px;
     animation: slideIn 0.5s forwards;
@@ -102,7 +106,7 @@ h3{
     margin: 10px;
 }
 
-@keyframes slideIn {
+@keyframes slideIn { 
     0% {left:0px; background-color: rgb(247, 49, 49);}
     100%{left:35px; background-color: rgb(114, 236, 44);}
     
@@ -136,3 +140,11 @@ h3{
     border-style: inset;
     border-radius: 0px 15px 15px 15px;
 }
+
+.inverse-filter-1 {
+    filter: invert(1) !important;
+}
+.inverse-filter-0 {
+    filter: invert(0) !important;
+}
+

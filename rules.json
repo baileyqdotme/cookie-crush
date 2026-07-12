@@ -156,6 +156,13 @@
                 "id": "st-cmp-v2",
                 "class": ""
             }
+        },
+        {
+            "name": "SkyScanner",
+            "modal": {
+                "id": "cookieBannerContent",
+                "class": ""
+            }
         }
     ],
 

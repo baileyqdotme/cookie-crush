@@ -8,6 +8,7 @@ var isRejecting = true;
 
 var darkMode = true;
 
+
 function onLoad() {
   console.log("Worker script loaded");
   loadPersistentData();
@@ -82,6 +83,8 @@ chrome.runtime.onMessage.addListener((message, sender, sendResponse) => {
   sendResponse(response);
 });
 
+
+//loads persistent data
 async function loadPersistentData() {
   let result = await chrome.storage.local.get(["totalCookiesAccepted", "totalCookiesRejected", "isEnabled", "isRejecting", "darkMode"]);
   if (Object.hasOwn(result, "totalCookiesAccepted") && Object.hasOwn(result, "totalCookiesRejected")) {
@@ -97,7 +100,7 @@ async function loadPersistentData() {
   }
   updateBadgeText();
 }
-
+//stores persistent data
 function storePersistentData() {
   chrome.storage.local.set(
     {

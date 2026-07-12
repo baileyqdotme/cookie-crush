@@ -27,17 +27,19 @@ function init() {
     });
 }
 
+
 function toggleEnabled() {
     chrome.runtime.sendMessage({type: "isEnabled"}, (enabledResponse) => {
         let enabled = enabledResponse.enabled;
         chrome.runtime.sendMessage({type: "setPersistentData", isEnabled: !enabled}, () => {
             let enableDisableButton = document.getElementById("enable_disable");
             //enableDisableButton.innerText = !enabled ? "Disable" : "Enable";
-
             slide("slide1", enabled);
         })
     })
 }
+
+
 
 function toggleRejecting() {
     chrome.runtime.sendMessage({type: "isRejecting"}, (rejectResponse) => {
@@ -45,11 +47,12 @@ function toggleRejecting() {
         chrome.runtime.sendMessage({type: "setPersistentData", isRejecting: !reject}, () => {
             let allowRejectButton = document.getElementById("allow_reject");
             //allowRejectButton.innerText = !reject ? "Reject all cookies" : "Allow all cookies";
-
             slide("slide2", !reject);
         })
     })
 }
+
+
 
 function slide(indicator, currentState){
     let dot = document.getElementById(indicator);
@@ -62,29 +65,44 @@ function slide(indicator, currentState){
         dot.style.animation="slideIn 0.5s forwards";
         currentState=true;
     }
-    console.log(currentState)
+    console.log(currentState) 
 }
+
 
 function lightdarkToggle() {
     setDarkMode(!darkMode, true);
     chrome.runtime.sendMessage({type: "setPersistentData", darkMode:darkMode});
 }
 
+
 function setDarkMode(mode, animate) {
     darkMode = mode;
     let content = document.getElementById("content");
+    let sliders = document.getElementsByClassName("sliderContainer");
     let indicator = document.getElementById("darklightImg");
+    let elements = [content]
+    for (let slider of sliders) {
+        elements.push(slider); 
+    }
     if (animate) {
         let animateMode = mode ? "darken" : "brighten";
-        content.style.animation = `${animateMode} .5s forwards`;
+        let oppositeMode = mode ? "brighten" : "darken";
+        let animate = `${animateMode} .5s forwards`;
+        for (let element of elements) {
+            element.style.animation = animate; 
+        }
     } else {
-        content.style.filter = `invert(${mode ? 0 : 1})`;
+        let invert = `invert(${mode ? 0 : 1})`;
+        let invertInvert = `invert(${mode ? 1 : 0}) !important`;
+        for (let element of elements) {
+            element.style.filter = invert; 
+        }
     }
-    indicator.src = mode ? "moon.png" : "sun.png";
+    
+    indicator.src = mode ? "moon.png" : "sun.png"; 
 
     chrome.runtime.sendMessage({type: "setPersistentData", darkMode:mode});
 }
-
 
 function debugSettings() {
     chrome.runtime.sendMessage({type: "getPersistentData"}, (dataResponse) => {
