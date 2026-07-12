@@ -1,0 +1,166 @@
+{
+    "providers": [
+        {
+            "name": "OneTrust",
+            "modal": {
+                "id": "onetrust-consent-sdk",
+                "class": ""
+            }
+        },
+        {
+            "name": "CookieBot",
+            "modal": {
+                "id": "CybotCookiebotDialog",
+                "class": ""
+            }
+        },
+        {
+            "name": "Google",
+            "modal": {
+                "id": "",
+                "class": "",
+                "aria-label": "Before you continue to Google Search"
+            }
+        },
+        {
+            "name": "YouTube",
+            "modal": {
+                "id": "",
+                "class": "body style-scope ytd-consent-bump-v2-lightbox"
+            }
+        },
+        {
+            "name": "didomi",
+            "modal": {
+                "id": "didomi-host",
+                "class": ""
+            }
+        },
+        {
+            "name": "IKEA",
+            "modal": {
+                "id": "",
+                "class": ""
+            }
+        },
+        {
+            "name": "StackOverflow",
+            "modal": {
+                "id": "onetrust-group-container",
+                "class": ""
+            }
+        },
+        {
+            "name": "Optanon",
+            "modal": {
+                "id": "optanon-menu",
+                "class": ""
+            }
+        },
+        {
+            "name": "Optanon 2",
+            "modal": {
+                "id": "optanon-popup-body-content",
+                "class": ""
+            }
+        },
+        {
+            "name": "Quantcast",
+            "modal": {
+                "id": "qc-cmp2-ui",
+                "class": "",
+
+                "more-options-id": "more-options-btn"
+            }
+        },
+        {
+            "name": "Quantcast (More Options)",
+            "modal": {
+                "id": "",
+                "class": "qc-cmp2-header-links"
+            }
+        },
+        {
+            "name": "Tealium",
+            "modal": {
+                "id": "cc-main",
+                "class": ""
+            }
+        },
+        {
+            "name": "TrustArc",
+            "modal": {
+                "id": "truste-consent-content",
+                "class": ""
+            }
+        },
+        {
+            "name": "Usercentrics",
+            "modal": {
+                "id": "usercentrics-cmp-ui",
+                "class": ""
+            }
+        },
+        {
+            "name": "Usercentrics (Shadow)",
+            "modal": {
+                "id": "uc-cmp-footer",
+                "class": ""
+            }
+        },
+        {
+            "name": "Drata",
+            "modal": {
+                "id": "",
+                "class": "dg-consent-banner dg-bottom visible"
+            }
+        },
+        {
+            "name": "Drata 2 (Shadow Root)",
+            "modal": {
+                "id": "",
+                "class": "dg-button"
+            }
+        },
+        {
+            "name": "UniConsent",
+            "modal": {
+                "id": "uniccmp",
+                "class": ""
+            }
+        },
+        {
+            "name": "UniConsent 2",
+            "modal": {
+                "id": "unic",
+                "class": ""
+            }
+        },
+        {
+            "name": "WordPress",
+            "modal": {
+                "id": "",
+                "class": "a8c-cookie-banner a8c-cookie-banner-v2 a8c-cookie-banner-decline-non-essential"
+            }
+        },
+        {
+            "name": "CookieYES",
+            "modal": {
+                "id": "",
+                "class": "cky-notice"
+            }
+        },
+        {
+            "name": "sharethis",
+            "modal": {
+                "id": "st-cmp-v2",
+                "class": ""
+            }
+        }
+    ],
+
+    "acceptText": ["accept", "allow", "agree", "accept all"],
+    "rejectText": ["reject", "reject all", "deny", "decline", "essential", "essential only", "essentials only", "only necessary", "necessary only", "only essential", "disagree", "necessary cookies only"],
+    "moreOptions": ["more options", "customize", "customise", "settings", "preferences", "manage settings", "manage preferences", "manage cookies", "cookie settings", "cookie preferences", "cookie management"]
+
+}

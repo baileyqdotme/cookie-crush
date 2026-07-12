@@ -1,17 +1,41 @@
 <!DOCTYPE html>
-
-<html>
-    <head>
+<html id="content">
+    <head >
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title></title>
         <meta name="description" content="">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <link rel="stylesheet" href="styles.css">
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
-        <h1>Cookie Crusher</h1>
-        <h2>test again!</h2>
-        <script src="" async defer></script>
+        <script src="scripts/popup/script.js"></script>
+        <div class="grid">
+            <div class="header">
+                <h1 style="font-size: 40px;">Cookie Crusher</h1>
+                <p style="font-size: 15px;">Crushes cookies like no ones business!</p>
+                <div id="darklight" class="clickable"><img src="sun.png" id="darklightImg" style="height: 30px; width: 30px;"></div>
+            </div>
+            <div class="toggle">
+                <div >Enable</div>
+                <div >Allow all cookies</div>
+            </div>
+            <div class="indicator">
+                <div class="container clickable" id="enable_disable">
+                    <div class="slider" id="slide1"></div>
+                </div>
+                <div class="container clickable" id="allow_reject">
+                    <div class="slider" id="slide2"></div>
+                </div>
+            </div>
+
+            <div class="bottom">   
+                <div class="statsbox">
+                <p id="sessionCount">-----</p>
+                <p id="totalCount">---</p>
+                </div>
+            </div>
+        </div>
+        
     </body>
 </html>
