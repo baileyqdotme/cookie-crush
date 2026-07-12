@@ -1,6 +1,5 @@
 console.log("Loaded content script (Cookie Crusher)");
 
-// vars
 var rules;
 
 // weakset better than set for garbage collection
@@ -8,7 +7,6 @@ var rules;
 var already_handled = new WeakSet();
 var trackedModals = new Set();
 
-// Provider settings
 var enabled;
 var reject;
 
@@ -24,7 +22,6 @@ const ignored_elements = [
     "head",
 ]
 
-// stuff
 async function getRules() {
     const request = await fetch(
         chrome.runtime.getURL("rules.json")
@@ -40,11 +37,11 @@ function deepQuerySelectorAll(root, selector = "*") {
         results = results.concat(deepQuerySelectorAll(root.shadowRoot, selector));
     }
     results = results.concat(
-        [...root.querySelectorAll(selector)].filter(el => !ignored_elements.includes(el.tagName.toLowerCase()))
+        [...root.querySelectorAll(selector)].filter(elem => !ignored_elements.includes(elem.tagName.toLowerCase()))
     );
-    for (const el of root.querySelectorAll("*")) {
-        if (el.shadowRoot) {
-            results = results.concat(deepQuerySelectorAll(el.shadowRoot, selector));
+    for (const elem of root.querySelectorAll("*")) {
+        if (elem.shadowRoot) {
+            results = results.concat(deepQuerySelectorAll(elem.shadowRoot, selector));
         }
     }
     return results;
@@ -71,7 +68,6 @@ function isClickable(element) {
     // role of "button", "submit", etc.
     // onclick attribute
     // cursor style of "pointer"
-    // tabinex greater than 0
 
     if (element.tagName === "BUTTON" || element.tagName === "A") {
         return true;
@@ -133,10 +129,6 @@ function checkForProviderDialogue(element) {
 
 }
 
-function showSuccessNotification() {
-
-}
-
 function checkElementForProviderClick(element) {
     let text_finding = reject ? rules.rejectText : rules.acceptText;
 
@@ -156,7 +148,6 @@ function checkElementForProviderClick(element) {
                 continue;
             }
 
-            // check if the parent is a button
             if (child.parentElement && child.parentElement.tagName === "BUTTON") {
                 child = child.parentElement;
             }
@@ -211,7 +202,8 @@ function handleElement(element, do_more_options = true) {
     if (!do_more_options) { return; }
 
 
-    // not found, check for a "MORE OPTIONS" button and click it, then re-run the function
+    // checking for a "MORE OPTIONS"
+
     let text_finding = rules.moreOptions;
     let found_flag = false;
     
@@ -270,7 +262,8 @@ const observer = new MutationObserver((mutations) => {
             }
             handleElement(addedNode);
 
-            // Shadow Roots
+            // observe shadown roots as some providers
+            // have modals in shadow roots (like drata)
             if (addedNode.shadowRoot) {
                 observer.observe(addedNode.shadowRoot, { childList: true, subtree: true });
                 observeShadowRoots(addedNode.shadowRoot);
@@ -280,7 +273,8 @@ const observer = new MutationObserver((mutations) => {
         }
     }
 
-    // retry any modal we've already found, in case its buttons rendered in afterward
+    // retry modals in-case they have been populated
+    // after the initial check (like with the shadow doms on drata)
     if (!has_incremented) {
         for (const modal of trackedModals) {
             if (checkElementForProviderClick(modal)) { break; }

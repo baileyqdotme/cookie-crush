@@ -10,16 +10,11 @@ function init() {
         slide("slide2", reject);
         //allowRejectButton.innerText = reject ? "Reject all cookies" : "Allow all cookies";
         chrome.runtime.sendMessage({type: "getPersistentData"}, (dataResponse) => {
-
-            console.log("Persistent Data:");
-            console.log(dataResponse);
-
             let sessionCount = reject ? dataResponse.sessionCookiesRejected : dataResponse.sessionCookiesAccepted;
             let totalCount = reject ? dataResponse.totalCookiesRejected : dataResponse.totalCookiesAccepted;
             sessionCountElement.innerHTML = `Cookies automatically ${keyword} this session: ${sessionCount ?? 0}`;
             totalCountElement.innerHTML = `Total cookies automatically ${keyword}: ${totalCount ?? 0}`;
             darkMode = dataResponse.darkMode ?? true;
-            console.log("Dark mode: "+dataResponse.darkMode)
             setDarkMode(darkMode, false);
         })
     })
