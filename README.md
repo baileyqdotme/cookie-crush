@@ -10,8 +10,7 @@ This is a chrome extension, so it's only supported on Google Chrome or any other
 2. Extract the zip file.
 3. Open Chrome and go to `chrome://extensions/`.
 4. Enable the "Developer mode" toggle in the top right.
-5. Click `Load unpacked` and select the folder the extension was extracted to.
-   *(This is the folder containing `manifest.json`)*
+5. Click `Load unpacked` and select the folder the extension was extracted to. (This is the folder containing `manifest.json`)
 
 ----
 
