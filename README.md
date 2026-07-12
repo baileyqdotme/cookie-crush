@@ -1,4 +1,4 @@
-# Cookie Crush
+# Cookie Crusher
 A simple chrome extension that automates cookie popups on websites.
 Created for the **vsHacks 2026 hackathon** with [Prismat2ca](https://github.com/Prismat2ca), [choisum](https://github.com/omiy0), [Boid](https://github.com/boidd) and [baileyqdotme](https://github.com/baileyqdotme).
 
