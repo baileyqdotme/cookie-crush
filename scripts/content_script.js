@@ -116,7 +116,6 @@ function checkForProviderDialogue(element) {
         
 
         if (element.hasAttribute("aria-label") && !(element.getAttribute("aria-label") == "" || element.getAttribute("aria-label") == null || prov.modal["aria-label"] == "" || prov.modal["aria-label"] == null)) {
-            
             if (element.getAttribute("aria-label") == prov.modal["aria-label"]) {
                 provider = prov;
                 return true;
@@ -160,7 +159,6 @@ function checkElementForProviderClick(element) {
             setTimeout(() => {
                 child.click();
                 simulateClick(child);
-                showSuccessNotification();
             }, 250);
 
             // incrementPersistentData
@@ -216,7 +214,6 @@ function handleElement(element, do_more_options = true) {
             setTimeout(() => {
                 child.click();
                 simulateClick(child);
-                showSuccessNotification();
             }, 100);
         }
     
@@ -226,7 +223,6 @@ function handleElement(element, do_more_options = true) {
             setTimeout(() => {
                 child.click();
                 simulateClick(child);
-                showSuccessNotification();
             }, 100);
 
             found_flag = true;
